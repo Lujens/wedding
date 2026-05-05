@@ -47,7 +47,7 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
 
 /* ── HERO ── */
 #hero { position: relative; height: 100vh; min-height: 580px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: url('YOUR_PHOTO_HERE.jpg') center/cover no-repeat; background-color: #b0c4b0; z-index: 0; }
+.hero-bg { position: absolute; inset: 0; background: url('IZ9A5697.jpg') 50% 30%/cover no-repeat; background-color: #b0c4b0; z-index: 0; }
 .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(242,237,226,0.15) 0%, rgba(242,237,226,0.25) 40%, rgba(242,237,226,0.55) 85%, rgba(242,237,226,1) 100%); }
 .hero-content { position: relative; z-index: 1; padding: 0 24px; }
 .hero-eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 16px; }
@@ -56,7 +56,7 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
 .hero-rule::before, .hero-rule::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: rgba(90,122,85,0.35); }
 .hero-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
 .hero-date { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 40px; }
-.hero-date .stylish { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--gold); letter-spacing: 0.08em; }
+.hero-date .stylish { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--gold); letter-spacing: 0.08em; }
 .hero-cta-link { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mid); transition: color .2s; }
 .hero-cta-link:hover { color: var(--sage); }
 .hero-cta-link .chevron { font-size: 18px; animation: bounce 2s ease-in-out infinite; }
@@ -169,6 +169,23 @@ section { padding: 100px 24px; }
 
 /* ── GALLERY ── */
 #gallery { background: var(--cream-bg); }
+.amazon-registry-card {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 560px; margin: 0 auto;
+  background: var(--sage-dark);
+  border-radius: 12px; padding: 22px 28px;
+  text-decoration: none; transition: background .2s;
+  cursor: pointer;
+}
+.amazon-registry-card:hover { background: var(--sage); }
+.arc-left { display: flex; align-items: center; gap: 18px; }
+.arc-icon { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(232,217,190,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.arc-icon svg { width: 20px; height: 20px; }
+.arc-title { font-size: 15px; color: rgba(232,217,190,0.92); margin-bottom: 3px; }
+.arc-sub { font-size: 12px; color: rgba(232,217,190,0.4); }
+.arc-arrow { font-size: 20px; color: rgba(232,217,190,0.35); transition: transform .2s; }
+.amazon-registry-card:hover .arc-arrow { transform: translate(2px,-2px); color: rgba(232,217,190,0.7); }
+
 .gallery-zone { border: 2px dashed var(--border); border-radius: 14px; padding: 48px 24px; text-align: center; cursor: pointer; transition: all .3s; background: var(--cream-card); }
 .gallery-zone:hover { border-color: var(--sage-mid); background: var(--cream-white); }
 .gallery-zone .gz-icon { font-size: 32px; margin-bottom: 12px; }
@@ -184,6 +201,20 @@ section { padding: 100px 24px; }
 .lightbox.on { display: flex; }
 .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; object-fit: contain; }
 .lb-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 22px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+/* ── PROPOSAL VIDEO ── */
+#proposal { background: var(--cream-card); }
+.proposal-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-mid); margin-bottom: 40px; }
+.proposal-video-wrap { position: relative; max-width: 380px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px rgba(45,56,40,0.18); background: #1a2018; aspect-ratio: 9/16; }
+.proposal-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.proposal-play-btn { position: absolute; inset: 0; background: rgba(0,0,0,0.18); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+.proposal-play-btn:hover { background: rgba(0,0,0,0.28); }
+.proposal-play-btn.playing { background: transparent; }
+.proposal-play-btn.playing:hover { background: rgba(0,0,0,0.1); }
+.play-icon { width: 64px; height: 64px; background: rgba(242,237,226,0.92); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--sage-dark); padding-left: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transition: transform .2s, opacity .2s; line-height: 1; }
+.proposal-play-btn.playing .play-icon { opacity: 0; transform: scale(0.8); }
+.proposal-play-btn.playing:hover .play-icon { opacity: 1; transform: scale(1); }
+@media (max-width: 500px) { .proposal-video-wrap { max-width: 100%; border-radius: 14px; } }
 
 /* ── RSVP ── */
 #rsvp { background: var(--cream-bg); }
@@ -231,6 +262,20 @@ section { padding: 100px 24px; }
 .badge-no  { background: rgba(176,58,46,0.08); color: #a0392d; }
 .tracker-empty { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
 
+/* ── FAQ ── */
+#faq { background: var(--cream-bg); }
+.faq-list { max-width: 660px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { width: 100%; padding: 22px 4px; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: none; border: none; cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--text-dark); text-align: left; transition: color .2s; }
+.faq-q:hover { color: var(--sage); }
+.faq-chev { font-size: 18px; color: var(--gold); transition: transform .3s; flex-shrink: 0; }
+.faq-item.open .faq-chev { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--text-mid); line-height: 1.8; padding: 0 4px 24px; }
+.faq-a p strong { font-style: normal; color: var(--text-dark); font-weight: 500; }
+
 /* ── QUESTIONS ── */
 #questions { background: var(--cream-bg); padding-top: 0; }
 .questions-card { background: var(--blush); border-radius: 16px; padding: 48px; text-align: center; max-width: 660px; margin: 0 auto; }
@@ -265,7 +310,9 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <li><a href="#schedule">Program</a></li>
       <li><a href="#gifts">Gifts</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#proposal">Proposal</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
   </div>
@@ -304,9 +351,9 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
       <div class="timeline-row tl-left">
         <div class="tl-content">
-          <div class="tl-year">The Beginning</div>
-          <div class="tl-heading">How We Met</div>
-          <div class="tl-text">Our paths crossed in the most unexpected way. What started as a chance encounter became the beginning of something neither of us could have imagined.</div>
+          <div class="tl-year">The Very Beginning</div>
+          <div class="tl-heading">Little Kids, Big Feelings</div>
+          <div class="tl-text">We first crossed paths in pre-school — too young to understand what love was, but old enough to feel something. We shared classrooms through elementary and middle school, carrying quiet little crushes neither of us quite knew how to name.</div>
         </div>
         <div class="tl-empty"></div>
       </div>
@@ -314,17 +361,17 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <div class="timeline-row tl-right">
         <div class="tl-empty"></div>
         <div class="tl-content">
-          <div class="tl-year">Growing Together</div>
-          <div class="tl-heading">First Adventure</div>
-          <div class="tl-text">We discovered our shared love for life, laughter, and each other. From late-night conversations to spontaneous moments, every day brought us closer.</div>
+          <div class="tl-year">Life Happened</div>
+          <div class="tl-heading">She Moved Away</div>
+          <div class="tl-text">Then life did what life does — she moved away, and we each went on with our separate worlds. Years passed. But some people have a way of staying with you, even when distance says otherwise.</div>
         </div>
       </div>
 
       <div class="timeline-row tl-left">
         <div class="tl-content">
-          <div class="tl-year">Moving Forward</div>
-          <div class="tl-heading">Building Our Life</div>
-          <div class="tl-text">We knew this was forever. Supporting each other's dreams and growing stronger through every season of life together.</div>
+          <div class="tl-year">A Brief Reunion</div>
+          <div class="tl-heading">Crossing Paths Again</div>
+          <div class="tl-text">Six years later, we briefly found ourselves in the same place at the same time. A glimpse. A reminder that someone was still out there. It wasn't the moment — but it planted something.</div>
         </div>
         <div class="tl-empty"></div>
       </div>
@@ -332,10 +379,19 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <div class="timeline-row tl-right">
         <div class="tl-empty"></div>
         <div class="tl-content">
+          <div class="tl-year">The Spark</div>
+          <div class="tl-heading">A Soccer Game Changed Everything</div>
+          <div class="tl-text">Four years after that, a soccer game brought Lujens to her city. He reached out — "come hang, with the old crew." She came. And somewhere between old memories and new laughter, the spark that had been waiting all those years finally caught fire.</div>
+        </div>
+      </div>
+
+      <div class="timeline-row tl-left">
+        <div class="tl-content">
           <div class="tl-year">The Question</div>
           <div class="tl-heading">The Proposal</div>
-          <div class="tl-text">With a heart full of love and dreams for our future, the question was asked and answered with tears of joy.</div>
+          <div class="tl-text">What started in pre-school, survived distance, time, and life — ended with him on one knee and her saying yes through tears of joy. Some stories just know where they're going.</div>
         </div>
+        <div class="tl-empty"></div>
       </div>
 
       <div class="timeline-end">
@@ -404,7 +460,6 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <p class="schedule-sub">What we have prepared for you</p>
     </div>
 
-    <!-- TBA — replace with the program-timeline block below once schedule is confirmed -->
     <div class="program-tba-block fade-up">
       <div class="program-tba-text">Schedule to be announced</div>
       <div class="program-tba-sub">Check back closer to &nbsp;<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(232,217,190,0.55);">6·26·26</span></div>
@@ -461,22 +516,22 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <p class="gifts-intro">Your presence is what matters most to us. If you wish to give us a gift, you can do so in the way that suits you best.</p>
     </div>
     <div class="gifts-accordion fade-up">
-      <div class="accordion-item" id="acc1">
-        <button class="accordion-toggle" onclick="toggleAcc('acc1')">
-          <span>Amazon Registry</span>
-          <span class="chev">⌄</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-inner">
-            <p class="amazon-saved" id="amazon-saved">✓ Registry linked successfully</p>
-            <div class="amazon-link-row">
-              <input type="url" id="amazon-url" placeholder="Paste your Amazon registry link…">
-              <button class="btn-save" onclick="saveAmazon()">Save</button>
-            </div>
-            <a class="btn-visit" id="amazon-btn" href="#" target="_blank" onclick="visitAmazon(event)">View Full Registry &nbsp;↗</a>
+      <a class="amazon-registry-card" href="https://www.amazon.com/wedding/share/Pierres" target="_blank">
+        <div class="arc-left">
+          <div class="arc-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 7H4C2.9 7 2 7.9 2 9v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" stroke="rgba(232,217,190,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 3H8L6 7h12l-2-4z" stroke="rgba(232,217,190,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 12v4M10 14h4" stroke="rgba(232,217,190,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="arc-title">Amazon Registry</div>
+            <div class="arc-sub">View our curated wishlist</div>
           </div>
         </div>
-      </div>
+        <div class="arc-arrow">↗</div>
+      </a>
     </div>
 
     <!-- fountain divider -->
@@ -522,7 +577,7 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       </div>
       <div class="details-card-title">Wedding Ceremony &amp; Reception</div>
       <div class="details-meta">
-        <div>🕓&nbsp; 4:00 PM</div>
+        <div>🕓&nbsp; 5:00 PM</div>
         <div>📍&nbsp; Chateau Beau</div>
         <div>5600 SW 196th Ln</div>
         <div>Southwest Ranches, FL 33332</div>
@@ -545,8 +600,31 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
     <div class="dress-card fade-up">
       <div class="dc-title">Dress Code</div>
-      <div class="dc-value">Formal / Black Tie Optional</div>
+      <div class="dc-value">Formal / Black Tie</div>
       <div class="dc-note">We kindly ask guests to dress elegantly for our celebration.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSAL VIDEO -->
+<section id="proposal">
+  <div class="section-inner">
+    <div class="section-center fade-up">
+      <span class="section-script-label">The Moment</span>
+      <h2 class="section-main-title">He Asked. She Said Yes.</h2>
+      <div class="heart-divider"><span class="heart">♡</span></div>
+      <p class="proposal-sub">We walked toward the sunset. Then everything changed.</p>
+    </div>
+    <div class="proposal-video-wrap fade-up">
+      <video id="proposal-video" src="0204.mp4" playsinline loop preload="metadata" poster="proposal-poster.jpg"></video>
+      <button class="proposal-play-btn" id="play-btn" onclick="toggleVideo()">
+        <span class="play-icon" id="play-icon">
+          <!-- Play icon -->
+          <svg id="icon-play" viewBox="0 0 24 24" width="24" height="24" fill="var(--sage-dark)"><polygon points="6,3 20,12 6,21"/></svg>
+          <!-- Pause icon (hidden by default) -->
+          <svg id="icon-pause" viewBox="0 0 24 24" width="24" height="24" fill="var(--sage-dark)" style="display:none"><rect x="5" y="3" width="4" height="18" rx="1"/><rect x="15" y="3" width="4" height="18" rx="1"/></svg>
+        </span>
+      </button>
     </div>
   </div>
 </section>
@@ -559,13 +637,16 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <h2 class="section-main-title">Our Gallery</h2>
       <div class="heart-divider"><span class="heart">♡</span></div>
     </div>
-    <div class="gallery-zone fade-up" onclick="document.getElementById('gallery-file').click()">
-      <div class="gz-icon">🌿</div>
-      <div class="gz-title">Add your photos</div>
-      <div class="gz-sub">Click to upload engagement photos or any memories you'd like to share</div>
-      <input type="file" id="gallery-file" accept="image/*" multiple onchange="addPhotos(event)">
+    <!-- HARDCODED GALLERY — add/remove <img> tags here to update photos -->
+    <!-- Replace src values with your actual photo filenames (put photos in the same folder as this file) -->
+    <div class="gallery-grid fade-up">
+      <img src="IZ9A5863.jpg" onclick="openLb(this.src)">
+      <img src="IZ9A5697.jpg" onclick="openLb(this.src)">
+      <img src="IZ9A5778.jpg" onclick="openLb(this.src)">
+      <!-- <img src="photo4.jpg" onclick="openLb(this.src)">
+      <img src="photo5.jpg" onclick="openLb(this.src)">
+      <img src="photo6.jpg"  onclick="openLb(this.src)"> -->
     </div>
-    <div class="gallery-grid" id="gallery-grid"></div>
   </div>
 </section>
 
@@ -573,6 +654,110 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
   <button class="lb-close">✕</button>
   <img id="lb-img" src="" alt="">
 </div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-center fade-up">
+      <span class="section-script-label">Good to Know</span>
+      <h2 class="section-main-title">FAQ</h2>
+      <div class="heart-divider"><span class="heart">♡</span></div>
+    </div>
+    <div class="faq-list fade-up">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I bring a plus one?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>We have carefully curated our guest list to keep the celebration intimate and personal. The invitation is extended to you specifically — we kindly ask that only those named on the invitation attend. We hope you understand and look forward to celebrating with you!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I bring my children?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Unless your child is specifically named on the invitation, we ask that this be an adults-only evening. We want everyone — including you — to be fully present and enjoy the night.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the dress code?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Formal / Black Tie. Think elegant — floor-length gowns or cocktail dresses, suits or tuxedos. Please avoid white, ivory, and cream tones out of respect for the bride.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          When should I RSVP by?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Please RSVP by <strong>May 26, 2026</strong>. This helps us finalize seating, catering, and all the details that make the day special. RSVPs after this date may not be accommodated.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What time should I arrive?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Please arrive at <strong>5:00 PM sharp</strong> to find your seat and settle in. Guests who arrive after the ceremony has started will be asked to wait and be seated at an appropriate pause.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there parking at the venue?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes, Chateau Beau has on-site parking available for guests. We recommend carpooling where possible, especially if you plan to enjoy the open bar and celebrate fully through the night.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I take photos during the ceremony?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>We are having an unplugged ceremony — we kindly ask that phones and cameras be put away during the vows so everyone can be fully present. Our photographer will capture every moment. Photos are more than welcome during the reception! Please refrain from posting any photos or videos from the ceremony on social media, including WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will there be food for dietary restrictions?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Absolutely. Please mention any dietary restrictions or allergies in your RSVP so we can make sure you're taken care of. We want everyone to enjoy the meal fully.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if I have more questions?
+          <span class="faq-chev">⌄</span>
+        </button>
+        <div class="faq-a">
+          <p>Don't hesitate to reach out at <a href="mailto:hi@thepierres.com" style="color:var(--sage-dark);text-decoration:underline;">hi@thepierres.com</a>. We're happy to help with anything you need.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- RSVP -->
 <section id="rsvp">
@@ -653,9 +838,9 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <div class="q-title">Questions?</div>
       <div class="q-sub">Don't hesitate to reach out — we're happy to help.</div>
       <div class="q-contacts">
-        <a class="q-contact" href="mailto:lujenspierre@haitisportuniversel.com">
+        <a class="q-contact" href="mailto:hi@thepierres.com">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          lujenspierre@haitisportuniversel.com
+          hi@thepierres.com
         </a>
       </div>
     </div>
@@ -672,22 +857,6 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
 <script>
 let guests = JSON.parse(localStorage.getItem('wg2_guests')||'[]');
-let photos = JSON.parse(localStorage.getItem('wg2_photos')||'[]');
-let amazonUrl = localStorage.getItem('wg2_amazon')||'';
-
-function toggleAcc(id) { document.getElementById(id).classList.toggle('open'); }
-
-function saveAmazon() {
-  const v = document.getElementById('amazon-url').value.trim();
-  if (!v) return;
-  amazonUrl = v; localStorage.setItem('wg2_amazon', v);
-  document.getElementById('amazon-saved').style.display = 'block';
-}
-function visitAmazon(e) {
-  if (!amazonUrl) { e.preventDefault(); alert('Paste your Amazon registry link first, then click Save.'); return; }
-  e.currentTarget.href = amazonUrl;
-}
-if (amazonUrl) { document.getElementById('amazon-url').value = amazonUrl; document.getElementById('amazon-saved').style.display = 'block'; }
 
 function switchTab(t) {
   document.querySelectorAll('.rsvp-tab').forEach((el,i) => el.classList.toggle('on', (i===0&&t==='form')||(i===1&&t==='tracker')));
@@ -732,25 +901,39 @@ function updateStats() {
   document.getElementById('s-no').textContent = guests.filter(g=>g.status==='no').length;
 }
 
-function addPhotos(e) {
-  Array.from(e.target.files).forEach(file => {
-    const r = new FileReader();
-    r.onload = ev => { photos.push(ev.target.result); renderPhotos(); try { localStorage.setItem('wg2_photos',JSON.stringify(photos)); } catch(x){} };
-    r.readAsDataURL(file);
-  });
-}
-function renderPhotos() {
-  document.getElementById('gallery-grid').innerHTML = photos.map((s,i)=>`<img src="${s}" alt="Photo ${i+1}" onclick="openLb('${s}')">`).join('');
-}
 function openLb(src) { document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('on'); }
 function closeLb() { document.getElementById('lightbox').classList.remove('on'); }
+
+function toggleVideo() {
+  const video = document.getElementById('proposal-video');
+  const btn = document.getElementById('play-btn');
+  const iconPlay = document.getElementById('icon-play');
+  const iconPause = document.getElementById('icon-pause');
+  if (video.paused) {
+    video.play();
+    btn.classList.add('playing');
+    iconPlay.style.display = 'none';
+    iconPause.style.display = 'block';
+  } else {
+    video.pause();
+    btn.classList.remove('playing');
+    iconPlay.style.display = 'block';
+    iconPause.style.display = 'none';
+  }
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up, .timeline-row').forEach(el => io.observe(el));
 
-renderPhotos();
 updateStats();
 </script>
 </body>

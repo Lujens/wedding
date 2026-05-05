@@ -179,7 +179,8 @@ html, body {
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   background: linear-gradient(160deg, #c5d9c6 0%, #afc5b0 100%);
   transform: rotateX(180deg);
-  backface-visibility: visible;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   opacity: 0.7;
 }
 
@@ -196,7 +197,7 @@ html, body {
 
 #wax-seal svg {
   width: 100%; height: 100%;
-  filter: drop-shadow(0 8px 24px rgba(176,58,46,0.5));
+  filter: drop-shadow(0 8px 24px rgba(58,79,60,0.6));
 }
 
 .seal-pulse {
@@ -204,8 +205,8 @@ html, body {
 }
 
 @keyframes sealPulse {
-  0%, 100% { filter: drop-shadow(0 8px 24px rgba(176,58,46,0.5)); }
-  50% { filter: drop-shadow(0 12px 32px rgba(176,58,46,0.8)) drop-shadow(0 0 20px rgba(201,169,110,0.3)); }
+  0%, 100% { filter: drop-shadow(0 8px 24px rgba(58,79,60,0.6)); }
+  50% { filter: drop-shadow(0 12px 32px rgba(58,79,60,0.9)) drop-shadow(0 0 20px rgba(122,158,126,0.4)); }
 }
 
 /* seal shards — for crack animation */
@@ -222,12 +223,12 @@ html, body {
   position: absolute;
   width: 360px;
   left: 50%; bottom: 0;
-  transform: translateX(-50%) translateY(30px) translateZ(-2px);
+  transform: translateX(-50%) translateY(30px) translateZ(40px);
   background: var(--cream);
   border-radius: 2px;
   padding: 40px 44px 36px;
   text-align: center;
-  z-index: 5;
+  z-index: 25;
   opacity: 0;
   box-shadow: 0 -2px 40px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(201,169,110,0.2);
 }
@@ -470,41 +471,41 @@ html, body {
       <div id="wax-seal" onclick="crackSeal()">
         <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" class="seal-pulse">
           <!-- outer glow ring -->
-          <circle cx="48" cy="48" r="46" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+          <circle cx="48" cy="48" r="46" fill="none" stroke="rgba(122,158,126,0.35)" stroke-width="1"/>
           <!-- main seal body with depth -->
-          <circle cx="48" cy="50" r="38" fill="#8a2318" opacity="0.4"/>
-          <circle cx="48" cy="48" r="38" fill="#b03a2e"/>
+          <circle cx="48" cy="50" r="38" fill="#2a4a2c" opacity="0.4"/>
+          <circle cx="48" cy="48" r="38" fill="#3a4f3c"/>
           <!-- rim -->
-          <circle cx="48" cy="48" r="38" fill="none" stroke="#cd6155" stroke-width="1.5"/>
+          <circle cx="48" cy="48" r="38" fill="none" stroke="#5a7a5c" stroke-width="1.5"/>
           <!-- inner detail ring -->
-          <circle cx="48" cy="48" r="32" fill="none" stroke="rgba(255,200,180,0.2)" stroke-width="0.8"/>
+          <circle cx="48" cy="48" r="32" fill="none" stroke="rgba(168,197,170,0.25)" stroke-width="0.8"/>
           <!-- decorative dots -->
-          <circle cx="48" cy="18" r="1.5" fill="rgba(255,180,160,0.5)"/>
-          <circle cx="48" cy="78" r="1.5" fill="rgba(255,180,160,0.5)"/>
-          <circle cx="18" cy="48" r="1.5" fill="rgba(255,180,160,0.5)"/>
-          <circle cx="78" cy="48" r="1.5" fill="rgba(255,180,160,0.5)"/>
+          <circle cx="48" cy="18" r="1.5" fill="rgba(168,197,170,0.6)"/>
+          <circle cx="48" cy="78" r="1.5" fill="rgba(168,197,170,0.6)"/>
+          <circle cx="18" cy="48" r="1.5" fill="rgba(168,197,170,0.6)"/>
+          <circle cx="78" cy="48" r="1.5" fill="rgba(168,197,170,0.6)"/>
           <!-- monogram L -->
-          <text x="36" y="54" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="rgba(255,235,225,0.92)" text-anchor="middle">L</text>
+          <text x="36" y="54" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="rgba(232,217,190,0.95)" text-anchor="middle">L</text>
           <!-- ampersand -->
-          <text x="48" y="54" font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="rgba(255,220,200,0.6)" text-anchor="middle">&amp;</text>
+          <text x="48" y="54" font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="rgba(201,169,110,0.75)" text-anchor="middle">&amp;</text>
           <!-- monogram K -->
-          <text x="60" y="54" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="rgba(255,235,225,0.92)" text-anchor="middle">K</text>
+          <text x="60" y="54" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="rgba(232,217,190,0.95)" text-anchor="middle">K</text>
           <!-- light sheen -->
           <ellipse cx="42" cy="36" rx="12" ry="7" fill="rgba(255,255,255,0.07)" transform="rotate(-20,42,36)"/>
         </svg>
 
         <!-- shards (revealed on crack) -->
         <svg class="shard" id="shard1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-          <path d="M48,48 L20,20 L48,10 L55,35 Z" fill="#b03a2e"/>
+          <path d="M48,48 L20,20 L48,10 L55,35 Z" fill="#3a4f3c"/>
         </svg>
         <svg class="shard" id="shard2" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-          <path d="M48,48 L76,20 L86,48 L60,52 Z" fill="#9a3025"/>
+          <path d="M48,48 L76,20 L86,48 L60,52 Z" fill="#2e4030"/>
         </svg>
         <svg class="shard" id="shard3" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-          <path d="M48,48 L80,72 L50,86 L42,60 Z" fill="#c04035"/>
+          <path d="M48,48 L80,72 L50,86 L42,60 Z" fill="#4a6741"/>
         </svg>
         <svg class="shard" id="shard4" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-          <path d="M48,48 L16,70 L10,44 L36,40 Z" fill="#a83228"/>
+          <path d="M48,48 L16,70 L10,44 L36,40 Z" fill="#344a36"/>
         </svg>
       </div>
 
@@ -667,7 +668,7 @@ function petalBurst() {
   const rect = seal.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
-  const colors = ['#c9a96e','#a8c5aa','#e2c98a','#7a9e7e','#d4c9b0','#cd6155'];
+  const colors = ['#c9a96e','#a8c5aa','#e2c98a','#7a9e7e','#d4c9b0','#5a7a5c'];
 
   for (let i = 0; i < 22; i++) {
     const petal = document.createElement('div');
