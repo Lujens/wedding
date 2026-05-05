@@ -261,6 +261,7 @@ section { padding: 100px 24px; }
 .badge-yes { background: rgba(74,103,65,0.1); color: var(--sage); }
 .badge-no  { background: rgba(176,58,46,0.08); color: #a0392d; }
 .tracker-empty { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
+.tracker-loading { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
 
 /* ── FAQ ── */
 #faq { background: var(--cream-bg); }
@@ -289,7 +290,7 @@ section { padding: 100px 24px; }
 /* ── FOOTER ── */
 footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: center; }
 .footer-names { font-family: 'Great Vibes', cursive; font-size: 56px; color: var(--gold-light); margin-bottom: 12px; }
-.footer-date { font-size: 13px; letter-spacing: 0.14em; color: rgba(232,217,190,0.45); margin-bottom: 8px; }
+.footer-date { font-size: 13px; letter-spacing: 0.14em; color: rgba(232,237,226,0.45); margin-bottom: 8px; }
 .footer-love { font-size: 13px; color: rgba(232,217,190,0.28); margin-bottom: 40px; }
 .footer-love .h { color: var(--gold); }
 .footer-tag { font-size: 11px; letter-spacing: 0.12em; color: rgba(232,217,190,0.18); padding-top: 24px; border-top: 1px solid rgba(232,217,190,0.08); }
@@ -619,9 +620,7 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <video id="proposal-video" src="0204.mp4" playsinline loop preload="metadata" poster="proposal-poster.jpg"></video>
       <button class="proposal-play-btn" id="play-btn" onclick="toggleVideo()">
         <span class="play-icon" id="play-icon">
-          <!-- Play icon -->
           <svg id="icon-play" viewBox="0 0 24 24" width="24" height="24" fill="var(--sage-dark)"><polygon points="6,3 20,12 6,21"/></svg>
-          <!-- Pause icon (hidden by default) -->
           <svg id="icon-pause" viewBox="0 0 24 24" width="24" height="24" fill="var(--sage-dark)" style="display:none"><rect x="5" y="3" width="4" height="18" rx="1"/><rect x="15" y="3" width="4" height="18" rx="1"/></svg>
         </span>
       </button>
@@ -637,15 +636,10 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       <h2 class="section-main-title">Our Gallery</h2>
       <div class="heart-divider"><span class="heart">♡</span></div>
     </div>
-    <!-- HARDCODED GALLERY — add/remove <img> tags here to update photos -->
-    <!-- Replace src values with your actual photo filenames (put photos in the same folder as this file) -->
     <div class="gallery-grid fade-up">
       <img src="IZ9A5863.jpg" onclick="openLb(this.src)">
       <img src="IZ9A5697.jpg" onclick="openLb(this.src)">
       <img src="IZ9A5778.jpg" onclick="openLb(this.src)">
-      <!-- <img src="photo4.jpg" onclick="openLb(this.src)">
-      <img src="photo5.jpg" onclick="openLb(this.src)">
-      <img src="photo6.jpg"  onclick="openLb(this.src)"> -->
     </div>
   </div>
 </section>
@@ -666,93 +660,48 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
     <div class="faq-list fade-up">
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Can I bring a plus one?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>We have carefully curated our guest list to keep the celebration intimate and personal. The invitation is extended to you specifically — we kindly ask that only those named on the invitation attend. We hope you understand and look forward to celebrating with you!</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">Can I bring a plus one?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>We have carefully curated our guest list to keep the celebration intimate and personal. The invitation is extended to you specifically — we kindly ask that only those named on the invitation attend. We hope you understand and look forward to celebrating with you!</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Can I bring my children?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Unless your child is specifically named on the invitation, we ask that this be an adults-only evening. We want everyone — including you — to be fully present and enjoy the night.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">Can I bring my children?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Unless your child is specifically named on the invitation, we ask that this be an adults-only evening. We want everyone — including you — to be fully present and enjoy the night.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          What is the dress code?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Formal / Black Tie. Think elegant — floor-length gowns or cocktail dresses, suits or tuxedos. Please avoid white, ivory, and cream tones out of respect for the bride.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">What is the dress code?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Formal / Black Tie. Think elegant — floor-length gowns or cocktail dresses, suits or tuxedos. Please avoid white, ivory, and cream tones out of respect for the bride.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          When should I RSVP by?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Please RSVP by <strong>May 26, 2026</strong>. This helps us finalize seating, catering, and all the details that make the day special. RSVPs after this date may not be accommodated.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">When should I RSVP by?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Please RSVP by <strong>May 26, 2026</strong>. This helps us finalize seating, catering, and all the details that make the day special. RSVPs after this date may not be accommodated.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          What time should I arrive?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Please arrive at <strong>5:00 PM sharp</strong> to find your seat and settle in. Guests who arrive after the ceremony has started will be asked to wait and be seated at an appropriate pause.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">What time should I arrive?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Please arrive at <strong>5:00 PM sharp</strong> to find your seat and settle in. Guests who arrive after the ceremony has started will be asked to wait and be seated at an appropriate pause.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Is there parking at the venue?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Yes, Chateau Beau has on-site parking available for guests. We recommend carpooling where possible, especially if you plan to enjoy the open bar and celebrate fully through the night.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">Is there parking at the venue?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Yes, Chateau Beau has on-site parking available for guests. We recommend carpooling where possible, especially if you plan to enjoy the open bar and celebrate fully through the night.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Can I take photos during the ceremony?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>We are having an unplugged ceremony — we kindly ask that phones and cameras be put away during the vows so everyone can be fully present. Our photographer will capture every moment. Photos are more than welcome during the reception! Please refrain from posting any photos or videos from the ceremony on social media, including WhatsApp.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">Can I take photos during the ceremony?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>We are having an unplugged ceremony — we kindly ask that phones and cameras be put away during the vows so everyone can be fully present. Our photographer will capture every moment. Photos are more than welcome during the reception! Please refrain from posting any photos or videos from the ceremony on social media, including WhatsApp.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Will there be food for dietary restrictions?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Absolutely. Please mention any dietary restrictions or allergies in your RSVP so we can make sure you're taken care of. We want everyone to enjoy the meal fully.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">Will there be food for dietary restrictions?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Absolutely. Please mention any dietary restrictions or allergies in your RSVP so we can make sure you're taken care of. We want everyone to enjoy the meal fully.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          What if I have more questions?
-          <span class="faq-chev">⌄</span>
-        </button>
-        <div class="faq-a">
-          <p>Don't hesitate to reach out at <a href="mailto:hi@thepierres.com" style="color:var(--sage-dark);text-decoration:underline;">hi@thepierres.com</a>. We're happy to help with anything you need.</p>
-        </div>
+        <button class="faq-q" onclick="toggleFaq(this)">What if I have more questions?<span class="faq-chev">⌄</span></button>
+        <div class="faq-a"><p>Don't hesitate to reach out at <a href="mailto:hi@thepierres.com" style="color:var(--sage-dark);text-decoration:underline;">hi@thepierres.com</a>. We're happy to help with anything you need.</p></div>
       </div>
 
     </div>
@@ -825,7 +774,8 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
           <thead><tr><th>Name</th><th>Status</th><th>Dietary</th></tr></thead>
           <tbody id="guest-tbody"></tbody>
         </table>
-        <div class="tracker-empty" id="tracker-empty">No RSVPs yet — check back soon</div>
+        <div class="tracker-loading" id="tracker-loading" style="display:none">Loading guests…</div>
+        <div class="tracker-empty" id="tracker-empty" style="display:none">No RSVPs yet — check back soon</div>
       </div>
     </div>
   </div>
@@ -856,74 +806,160 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 </footer>
 
 <script>
-let guests = JSON.parse(localStorage.getItem('wg2_guests')||'[]');
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx50UUIp37bqgdXi9Z-I_zGRu2J7OPBo0WJo--gaEYi45tmjE9NxnjaoYAM2tgcXrH3/exec';
 
+// ── RSVP TABS ──
 function switchTab(t) {
   document.querySelectorAll('.rsvp-tab').forEach((el,i) => el.classList.toggle('on', (i===0&&t==='form')||(i===1&&t==='tracker')));
   document.getElementById('panel-form').classList.toggle('on', t==='form');
   document.getElementById('panel-tracker').classList.toggle('on', t==='tracker');
-  if (t==='tracker') renderG();
+  if (t==='tracker') loadGuests();
 }
 
+// ── SUBMIT RSVP → Google Sheets ──
 function submitRSVP() {
-  const name = document.getElementById('f-name').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const att = document.querySelector('input[name="att"]:checked').value;
+  const name    = document.getElementById('f-name').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const att     = document.querySelector('input[name="att"]:checked').value;
   const dietary = document.getElementById('f-dietary').value.trim();
-  const msg = document.getElementById('f-msg').value.trim();
+  const msg     = document.getElementById('f-msg').value.trim();
   if (!name) { alert('Please enter your name.'); return; }
-  guests.push({ id: Date.now(), name, email, status: att, dietary: dietary||'—', message: msg, date: new Date().toLocaleDateString() });
-  localStorage.setItem('wg2_guests', JSON.stringify(guests));
-  document.getElementById('rsvp-form-wrap').style.display = 'none';
-  document.getElementById('rsvp-success').classList.add('on');
-  updateStats();
+
+  const btn = document.querySelector('.btn-rsvp');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  const payload = {
+    name,
+    email,
+    status: att,
+    dietary: dietary || '—',
+    message: msg,
+    date: new Date().toLocaleDateString()
+  };
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+    document.getElementById('rsvp-form-wrap').style.display = 'none';
+    document.getElementById('rsvp-success').classList.add('on');
+  })
+  .catch(() => {
+    alert('Something went wrong. Please try again.');
+    btn.textContent = 'Send RSVP';
+    btn.disabled = false;
+  });
 }
 
-function renderG(filter='') {
+// ── LOAD GUESTS FROM Google Sheets ──
+function loadGuests() {
+  const tbody   = document.getElementById('guest-tbody');
+  const empty   = document.getElementById('tracker-empty');
+  const loading = document.getElementById('tracker-loading');
+
+  tbody.innerHTML = '';
+  empty.style.display = 'none';
+  loading.style.display = 'block';
+
+  fetch(SHEET_URL)
+    .then(r => r.json())
+    .then(data => {
+      loading.style.display = 'none';
+      // filter out the header row if returned
+      const guests = data.filter(g => g.Name && g.Name !== 'Name');
+      if (!guests.length) { empty.style.display = 'block'; updateStats(guests); return; }
+      renderRows(guests);
+      updateStats(guests);
+    })
+    .catch(() => {
+      loading.style.display = 'none';
+      empty.style.display = 'block';
+      empty.textContent = 'Could not load guest list. Try again later.';
+    });
+}
+
+function renderRows(guests, filter='') {
   const tbody = document.getElementById('guest-tbody');
   const empty = document.getElementById('tracker-empty');
   const f = filter.toLowerCase();
-  const list = guests.filter(g => g.name.toLowerCase().includes(f)||g.email.toLowerCase().includes(f));
-  if (!list.length) { tbody.innerHTML=''; empty.style.display='block'; return; }
-  empty.style.display='none';
-  tbody.innerHTML = list.map(g=>`
-    <tr>
-      <td><div style="font-weight:500">${g.name}</div><div style="font-size:12px;color:var(--text-light)">${g.email}</div></td>
-      <td><span class="badge ${g.status==='yes'?'badge-yes':'badge-no'}">${g.status==='yes'?'Attending':'Declined'}</span></td>
-      <td style="font-size:13px;color:var(--text-mid)">${g.dietary}</td>
-    </tr>`).join('');
-  updateStats();
-}
-function filterG(v) { renderG(v); }
-function updateStats() {
-  document.getElementById('s-total').textContent = guests.length;
-  document.getElementById('s-yes').textContent = guests.filter(g=>g.status==='yes').length;
-  document.getElementById('s-no').textContent = guests.filter(g=>g.status==='no').length;
+  const list = filter
+    ? guests.filter(g => (g.Name||'').toLowerCase().includes(f) || (g.Email||'').toLowerCase().includes(f))
+    : guests;
+
+  if (!list.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = list.map(g => {
+    const status = (g.Status || '').toLowerCase();
+    const isYes  = status === 'yes';
+    return `
+      <tr>
+        <td><div style="font-weight:500">${g.Name||''}</div><div style="font-size:12px;color:var(--text-light)">${g.Email||''}</div></td>
+        <td><span class="badge ${isYes?'badge-yes':'badge-no'}">${isYes?'Attending':'Declined'}</span></td>
+        <td style="font-size:13px;color:var(--text-mid)">${g.Dietary||'—'}</td>
+      </tr>`;
+  }).join('');
 }
 
+// keep a local copy for search
+let cachedGuests = [];
+const _origLoad = loadGuests;
+loadGuests = function() {
+  const tbody   = document.getElementById('guest-tbody');
+  const empty   = document.getElementById('tracker-empty');
+  const loading = document.getElementById('tracker-loading');
+  tbody.innerHTML = '';
+  empty.style.display = 'none';
+  loading.style.display = 'block';
+  fetch(SHEET_URL)
+    .then(r => r.json())
+    .then(data => {
+      loading.style.display = 'none';
+      cachedGuests = data.filter(g => g.Name && g.Name !== 'Name');
+      if (!cachedGuests.length) { empty.style.display = 'block'; updateStats(cachedGuests); return; }
+      renderRows(cachedGuests);
+      updateStats(cachedGuests);
+    })
+    .catch(() => {
+      loading.style.display = 'none';
+      empty.style.display = 'block';
+      empty.textContent = 'Could not load guest list. Try again later.';
+    });
+};
+
+function filterG(v) { renderRows(cachedGuests, v); }
+
+function updateStats(guests) {
+  guests = guests || cachedGuests;
+  document.getElementById('s-total').textContent = guests.length;
+  document.getElementById('s-yes').textContent   = guests.filter(g=>(g.Status||'').toLowerCase()==='yes').length;
+  document.getElementById('s-no').textContent    = guests.filter(g=>(g.Status||'').toLowerCase()==='no').length;
+}
+
+// ── OTHER ──
 function openLb(src) { document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('on'); }
-function closeLb() { document.getElementById('lightbox').classList.remove('on'); }
+function closeLb()   { document.getElementById('lightbox').classList.remove('on'); }
 
 function toggleVideo() {
   const video = document.getElementById('proposal-video');
-  const btn = document.getElementById('play-btn');
-  const iconPlay = document.getElementById('icon-play');
+  const btn   = document.getElementById('play-btn');
+  const iconPlay  = document.getElementById('icon-play');
   const iconPause = document.getElementById('icon-pause');
   if (video.paused) {
-    video.play();
-    btn.classList.add('playing');
-    iconPlay.style.display = 'none';
-    iconPause.style.display = 'block';
+    video.play(); btn.classList.add('playing');
+    iconPlay.style.display='none'; iconPause.style.display='block';
   } else {
-    video.pause();
-    btn.classList.remove('playing');
-    iconPlay.style.display = 'block';
-    iconPause.style.display = 'none';
+    video.pause(); btn.classList.remove('playing');
+    iconPlay.style.display='block'; iconPause.style.display='none';
   }
 }
 
 function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
+  const item   = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
@@ -933,8 +969,6 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up, .timeline-row').forEach(el => io.observe(el));
-
-updateStats();
 </script>
 </body>
 </html>
