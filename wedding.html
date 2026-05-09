@@ -46,20 +46,50 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
 @media (max-width: 640px) { .nav-links { display: none; } }
 
 /* ── HERO ── */
-#hero { position: relative; height: 100vh; min-height: 580px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--cream-bg); }
-.hero-bg { display: none; }
-.hero-content { position: relative; z-index: 1; padding: 0 24px; }
-.hero-eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 16px; }
-.hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(64px, 12vw, 110px); color: var(--text-dark); line-height: 1; }
-.hero-rule { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 20px auto; }
-.hero-rule::before, .hero-rule::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: rgba(90,122,85,0.35); }
-.hero-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
-.hero-date { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 40px; }
-.hero-date .stylish { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--gold); letter-spacing: 0.08em; }
-.hero-cta-link { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mid); transition: color .2s; }
-.hero-cta-link:hover { color: var(--sage); }
-.hero-cta-link .chevron { font-size: 18px; animation: bounce 2s ease-in-out infinite; }
-@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+#hero {
+  position: relative;
+  height: 100vh; min-height: 580px;
+  display: flex; overflow: hidden;
+}
+.hero-photo {
+  flex: 0 0 55%;
+  background: url('IZ9A5697.jpg') center 30%/cover no-repeat;
+  background-color: #b0c4b0;
+}
+.hero-panel {
+  flex: 1;
+  background: var(--blush);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding: 64px 56px;
+}
+.hero-eyebrow { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-light); margin-bottom: 28px; }
+.hero-names {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(52px, 6vw, 88px);
+  color: var(--text-dark); line-height: 1;
+  margin-bottom: 28px;
+}
+.hero-rule { width: 40px; height: 1px; background: var(--gold); margin-bottom: 28px; }
+.hero-date { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mid); line-height: 2; }
+.hero-date .stylish { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--gold); letter-spacing: 0.06em; display: block; margin-bottom: 4px; }
+.hero-scroll-hint {
+  margin-top: 48px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 14px;
+  color: var(--text-light);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+}
+.hero-scroll-hint .chevron { font-size: 20px; animation: bounce 2s ease-in-out infinite; color: var(--gold-light); }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+@media (max-width: 700px) {
+  #hero { flex-direction: column; height: auto; min-height: 100vh; }
+  .hero-photo { flex: 0 0 52vh; width: 100%; }
+  .hero-panel { padding: 40px 28px; align-items: center; text-align: center; }
+  .hero-rule { margin-left: auto; margin-right: auto; }
+  .hero-scroll-hint { align-items: center; }
+}
 
 /* ── SECTIONS ── */
 section { padding: 100px 24px; }
@@ -353,20 +383,20 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
+  <div class="hero-photo"></div>
+  <div class="hero-panel">
     <p class="hero-eyebrow">We're getting married</p>
     <h1 class="hero-names">Lujens &amp; Krishnah</h1>
-    <div class="hero-rule"><div class="hero-diamond"></div></div>
-    <p class="hero-date">
+    <div class="hero-rule"></div>
+    <div class="hero-date">
       <span class="stylish">6·26·26</span>
-      &nbsp;&nbsp;·&nbsp;&nbsp;
-      Friday, June 26, 2026
-    </p>
-    <a class="hero-cta-link" href="#rsvp">
-      Confirm Attendance
+      Friday, June 26, 2026<br>
+      Chateau Beau · Southwest Ranches, FL
+    </div>
+    <div class="hero-scroll-hint">
+      Scroll to explore our story
       <span class="chevron">⌄</span>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -839,6 +869,9 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
       Please refrain from posting any photos, videos, or content from the ceremony on social media — including WhatsApp groups — until we share our official photos.
       <br><br>
       Thank you for respecting our wishes and helping make this day exactly what we dreamed of. 🤍
+      <br><br>
+      <strong style="font-size:13px;">Need to cancel?</strong>
+      If your plans change and you're unable to attend, please let us know as soon as possible at <a href="mailto:hi@thepierres.com" style="color:var(--sage-dark);text-decoration:underline;">hi@thepierres.com</a> so we can plan accordingly.
     </div>
     <button class="btn-rules-ok" onclick="closeRules()">I understand</button>
   </div>
