@@ -48,8 +48,10 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
 /* ── HERO ── */
 #hero {
   position: relative;
-  height: 100vh; min-height: 580px;
+  height: calc(100vh + 58px);
+  min-height: 580px;
   display: flex; overflow: hidden;
+  margin-top: -58px;
 }
 .hero-photo {
   flex: 0 0 55%;
@@ -62,6 +64,7 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
   display: flex; flex-direction: column;
   align-items: flex-start; justify-content: center;
   padding: 64px 56px;
+  padding-top: 80px;
 }
 .hero-eyebrow { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-light); margin-bottom: 28px; }
 .hero-names {
@@ -84,11 +87,18 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
 @media (max-width: 700px) {
-  #hero { flex-direction: column; height: auto; min-height: 100vh; }
+  #hero { flex-direction: column; height: auto; min-height: 100vh; margin-top: -58px; }
   .hero-photo { flex: 0 0 52vh; width: 100%; }
-  .hero-panel { padding: 40px 28px; align-items: center; text-align: center; }
+  .hero-panel { padding: 40px 28px; padding-top: 32px; align-items: center; text-align: center; }
   .hero-rule { margin-left: auto; margin-right: auto; }
   .hero-scroll-hint { align-items: center; }
+}
+
+/* ── HERO SEPARATOR ── */
+.hero-separator {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-light) 20%, var(--gold) 50%, var(--gold-light) 80%, transparent);
+  opacity: 0.5;
 }
 
 /* ── SECTIONS ── */
@@ -208,14 +218,7 @@ section { padding: 100px 24px; }
 
 /* ── GALLERY ── */
 #gallery { background: var(--cream-bg); }
-.amazon-registry-card {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: 560px; margin: 0 auto;
-  background: var(--sage-dark);
-  border-radius: 12px; padding: 22px 28px;
-  text-decoration: none; transition: background .2s;
-  cursor: pointer;
-}
+.amazon-registry-card { display: flex; align-items: center; justify-content: space-between; max-width: 560px; margin: 0 auto; background: var(--sage-dark); border-radius: 12px; padding: 22px 28px; text-decoration: none; transition: background .2s; cursor: pointer; }
 .amazon-registry-card:hover { background: var(--sage); }
 .arc-left { display: flex; align-items: center; gap: 18px; }
 .arc-icon { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(232,217,190,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -300,6 +303,8 @@ section { padding: 100px 24px; }
 .badge-yes { background: rgba(74,103,65,0.1); color: var(--sage); }
 .badge-no  { background: rgba(176,58,46,0.08); color: #a0392d; }
 .tracker-empty { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
+.tracker-loading { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
+
 /* ── ADMIN LOGIN ── */
 .admin-login { background: var(--cream-card); border: 1px solid var(--border); border-radius: 14px; padding: 40px 44px; text-align: center; }
 .admin-login p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--text-mid); margin-bottom: 24px; }
@@ -321,7 +326,7 @@ section { padding: 100px 24px; }
 .btn-rules-ok { padding: 14px 40px; background: var(--sage-dark); color: rgba(232,217,190,0.95); border: none; border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
 .btn-rules-ok:hover { background: var(--sage); }
 
-/* ── SCROLL LOCK on RSVP ── */
+/* ── SCROLL LOCK ── */
 .rsvp-locked { opacity: 0.4; pointer-events: none; filter: blur(2px); transition: all .4s; }
 .rsvp-unlock-hint { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--text-light); margin-bottom: 20px; }
 
@@ -399,6 +404,7 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
     </div>
   </div>
 </section>
+<div class="hero-separator"></div>
 
 <!-- OUR STORY -->
 <section id="story">
@@ -788,40 +794,40 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
     <div class="rsvp-panel on" id="panel-form">
       <p class="rsvp-unlock-hint" id="rsvp-hint" style="display:none">📜 Scroll through our story before confirming your attendance</p>
       <div id="rsvp-form-lock">
-      <div class="rsvp-form-card" id="rsvp-form-wrap">
-        <div class="form-group">
-          <label class="form-label">Full Name <sup>*</sup></label>
-          <input class="form-input" type="text" id="f-name" placeholder="Your full name">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address <sup>*</sup></label>
-          <input class="form-input" type="email" id="f-email" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Will you be attending? <sup>*</sup></label>
-          <div class="radio-row">
-            <label class="radio-opt"><input type="radio" name="att" value="yes" checked> <span>Joyfully Accept</span></label>
-            <label class="radio-opt"><input type="radio" name="att" value="no"> <span>Regretfully Decline</span></label>
+        <div class="rsvp-form-card" id="rsvp-form-wrap">
+          <div class="form-group">
+            <label class="form-label">Full Name <sup>*</sup></label>
+            <input class="form-input" type="text" id="f-name" placeholder="Your full name">
           </div>
+          <div class="form-group">
+            <label class="form-label">Email Address <sup>*</sup></label>
+            <input class="form-input" type="email" id="f-email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Will you be attending? <sup>*</sup></label>
+            <div class="radio-row">
+              <label class="radio-opt"><input type="radio" name="att" value="yes" checked> <span>Joyfully Accept</span></label>
+              <label class="radio-opt"><input type="radio" name="att" value="no"> <span>Regretfully Decline</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dietary restrictions</label>
+            <input class="form-input" type="text" id="f-dietary" placeholder="Vegetarian, allergies, etc.">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message for the Couple</label>
+            <textarea class="form-input" id="f-msg" rows="3" placeholder="Share your well wishes…" style="resize:vertical"></textarea>
+          </div>
+          <button class="btn-rsvp" onclick="submitRSVP()">
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Send RSVP
+          </button>
         </div>
-        <div class="form-group">
-          <label class="form-label">Dietary restrictions</label>
-          <input class="form-input" type="text" id="f-dietary" placeholder="Vegetarian, allergies, etc.">
+        <div class="rsvp-success" id="rsvp-success">
+          <div class="suc-icon">🌿</div>
+          <div class="suc-title">Thank you!</div>
+          <div class="suc-sub">Your RSVP has been received. We can't wait to celebrate with you.</div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Message for the Couple</label>
-          <textarea class="form-input" id="f-msg" rows="3" placeholder="Share your well wishes…" style="resize:vertical"></textarea>
-        </div>
-        <button class="btn-rsvp" onclick="submitRSVP()">
-          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-          Send RSVP
-        </button>
-      </div>
-      <div class="rsvp-success" id="rsvp-success">
-        <div class="suc-icon">🌿</div>
-        <div class="suc-title">Thank you!</div>
-        <div class="suc-sub">Your RSVP has been received. We can't wait to celebrate with you.</div>
-      </div>
       </div>
     </div>
 
@@ -903,7 +909,7 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
 <script>
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx50UUIp37bqgdXi9Z-I_zGRu2J7OPBo0WJo--gaEYi45tmjE9NxnjaoYAM2tgcXrH3/exec';
-const ADMIN_PASSWORD = 'pierres2026'; // change this to whatever you want
+const ADMIN_PASSWORD = 'pierres2026';
 
 // ── SCROLL LOCK ──
 let rsvpUnlocked = false;
@@ -920,7 +926,6 @@ function checkScrollUnlock() {
   }
 }
 
-// Start locked
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('rsvp-form-lock').classList.add('rsvp-locked');
   document.getElementById('rsvp-hint').style.display = 'block';
@@ -929,9 +934,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ── RULES POPUP ──
-function showRules() {
-  document.getElementById('rules-overlay').classList.add('on');
-}
+function showRules() { document.getElementById('rules-overlay').classList.add('on'); }
 function closeRules() {
   document.getElementById('rules-overlay').classList.remove('on');
   document.getElementById('rsvp-form-wrap').style.display = 'none';
@@ -959,7 +962,7 @@ function checkAdmin() {
   }
 }
 
-// ── SUBMIT RSVP → Google Sheets ──
+// ── SUBMIT RSVP ──
 function submitRSVP() {
   if (!rsvpUnlocked) return;
   const name    = document.getElementById('f-name').value.trim();
@@ -974,8 +977,7 @@ function submitRSVP() {
   btn.disabled = true;
 
   fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
+    method: 'POST', mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, status: att, dietary: dietary||'—', message: msg, date: new Date().toLocaleDateString() })
   })
@@ -987,12 +989,12 @@ function submitRSVP() {
   });
 }
 
-// ── LOAD GUESTS FROM Google Sheets ──
+// ── LOAD GUESTS ──
 let cachedGuests = [];
 
 function loadGuests() {
-  const tbody   = document.getElementById('guest-tbody');
-  const empty   = document.getElementById('tracker-empty');
+  const tbody = document.getElementById('guest-tbody');
+  const empty = document.getElementById('tracker-empty');
   const loading = document.getElementById('tracker-loading');
   tbody.innerHTML = '';
   empty.style.display = 'none';
@@ -1038,7 +1040,6 @@ function updateStats(guests) {
   document.getElementById('s-no').textContent    = guests.filter(g=>(g.Status||'').toLowerCase()==='no').length;
 }
 
-// ── OTHER ──
 function openLb(src) { document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('on'); }
 function closeLb()   { document.getElementById('lightbox').classList.remove('on'); }
 
