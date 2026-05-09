@@ -46,9 +46,8 @@ nav { position: sticky; top: 0; background: rgba(242,237,226,0.95); backdrop-fil
 @media (max-width: 640px) { .nav-links { display: none; } }
 
 /* ── HERO ── */
-#hero { position: relative; height: 100vh; min-height: 580px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: url('IZ9A5697.jpg') 50% 30%/cover no-repeat; background-color: #b0c4b0; z-index: 0; }
-.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(242,237,226,0.15) 0%, rgba(242,237,226,0.25) 40%, rgba(242,237,226,0.55) 85%, rgba(242,237,226,1) 100%); }
+#hero { position: relative; height: 100vh; min-height: 580px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--cream-bg); }
+.hero-bg { display: none; }
 .hero-content { position: relative; z-index: 1; padding: 0 24px; }
 .hero-eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 16px; }
 .hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(64px, 12vw, 110px); color: var(--text-dark); line-height: 1; }
@@ -84,6 +83,16 @@ section { padding: 100px 24px; }
 .timeline-row.tl-left .tl-empty { grid-column: 2; }
 .timeline-row.tl-right .tl-empty { grid-column: 1; }
 .timeline-row.tl-right .tl-content { grid-column: 2; text-align: left; padding-left: 48px; }
+
+@media (max-width: 600px) {
+  .timeline-line { left: 16px; }
+  .timeline-row { grid-template-columns: 1fr; margin-bottom: 40px; }
+  .timeline-row::after { left: 16px; transform: translateX(-50%); }
+  .timeline-row.tl-left .tl-content,
+  .timeline-row.tl-right .tl-content { grid-column: 1; text-align: left; padding-left: 40px; padding-right: 0; }
+  .timeline-row.tl-left .tl-empty,
+  .timeline-row.tl-right .tl-empty { display: none; }
+}
 
 .tl-year { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--gold); margin-bottom: 6px; }
 .tl-heading { font-family: 'Great Vibes', cursive; font-size: 36px; color: var(--text-dark); line-height: 1.1; margin-bottom: 12px; }
@@ -261,7 +270,30 @@ section { padding: 100px 24px; }
 .badge-yes { background: rgba(74,103,65,0.1); color: var(--sage); }
 .badge-no  { background: rgba(176,58,46,0.08); color: #a0392d; }
 .tracker-empty { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
-.tracker-loading { text-align: center; padding: 40px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--text-light); }
+/* ── ADMIN LOGIN ── */
+.admin-login { background: var(--cream-card); border: 1px solid var(--border); border-radius: 14px; padding: 40px 44px; text-align: center; }
+.admin-login p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--text-mid); margin-bottom: 24px; }
+.admin-input-row { display: flex; gap: 10px; max-width: 360px; margin: 0 auto; }
+.admin-input { flex: 1; padding: 12px 16px; background: var(--cream-white); border: 1px solid var(--border); border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 14px; color: var(--text-dark); outline: none; transition: border-color .2s; }
+.admin-input:focus { border-color: var(--sage-mid); }
+.btn-admin { padding: 12px 20px; background: var(--sage-dark); color: rgba(232,217,190,0.9); border: none; border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 13px; cursor: pointer; white-space: nowrap; transition: background .2s; }
+.btn-admin:hover { background: var(--sage); }
+.admin-error { font-size: 13px; color: #a0392d; margin-top: 10px; display: none; }
+
+/* ── RULES POPUP ── */
+.rules-overlay { display: none; position: fixed; inset: 0; background: rgba(45,56,40,0.7); z-index: 9998; align-items: center; justify-content: center; padding: 24px; }
+.rules-overlay.on { display: flex; }
+.rules-modal { background: var(--cream-white); border-radius: 16px; padding: 48px 40px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 32px 80px rgba(0,0,0,0.25); }
+.rules-icon { font-size: 36px; margin-bottom: 16px; }
+.rules-title { font-family: 'Great Vibes', cursive; font-size: 38px; color: var(--sage-dark); margin-bottom: 16px; }
+.rules-body { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; }
+.rules-body strong { font-style: normal; color: var(--text-dark); display: block; margin-bottom: 8px; font-size: 15px; letter-spacing: 0.05em; }
+.btn-rules-ok { padding: 14px 40px; background: var(--sage-dark); color: rgba(232,217,190,0.95); border: none; border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
+.btn-rules-ok:hover { background: var(--sage); }
+
+/* ── SCROLL LOCK on RSVP ── */
+.rsvp-locked { opacity: 0.4; pointer-events: none; filter: blur(2px); transition: all .4s; }
+.rsvp-unlock-hint { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--text-light); margin-bottom: 20px; }
 
 /* ── FAQ ── */
 #faq { background: var(--cream-bg); }
@@ -720,10 +752,12 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
     <div class="rsvp-tabs">
       <button class="rsvp-tab on" onclick="switchTab('form')">Send RSVP</button>
-      <button class="rsvp-tab" onclick="switchTab('tracker')">Guest List</button>
+      <button class="rsvp-tab" onclick="switchTab('tracker')">Admin</button>
     </div>
 
     <div class="rsvp-panel on" id="panel-form">
+      <p class="rsvp-unlock-hint" id="rsvp-hint" style="display:none">📜 Scroll through our story before confirming your attendance</p>
+      <div id="rsvp-form-lock">
       <div class="rsvp-form-card" id="rsvp-form-wrap">
         <div class="form-group">
           <label class="form-label">Full Name <sup>*</sup></label>
@@ -758,28 +792,57 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
         <div class="suc-title">Thank you!</div>
         <div class="suc-sub">Your RSVP has been received. We can't wait to celebrate with you.</div>
       </div>
+      </div>
     </div>
 
     <div class="rsvp-panel" id="panel-tracker">
-      <div class="tracker-card">
-        <div class="tracker-top">
-          <div class="tracker-stats">
-            <div class="tstat"><div class="tstat-num" id="s-total">0</div><div class="tstat-label">Total</div></div>
-            <div class="tstat"><div class="tstat-num" id="s-yes">0</div><div class="tstat-label">Attending</div></div>
-            <div class="tstat"><div class="tstat-num" id="s-no">0</div><div class="tstat-label">Declined</div></div>
-          </div>
-          <input class="tracker-search" type="text" placeholder="Search guests…" oninput="filterG(this.value)">
+      <div id="admin-login-wrap" class="admin-login">
+        <p>This section is for the couple only.</p>
+        <div class="admin-input-row">
+          <input class="admin-input" type="password" id="admin-pw" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkAdmin()">
+          <button class="btn-admin" onclick="checkAdmin()">Enter</button>
         </div>
-        <table class="tracker-table">
-          <thead><tr><th>Name</th><th>Status</th><th>Dietary</th></tr></thead>
-          <tbody id="guest-tbody"></tbody>
-        </table>
-        <div class="tracker-loading" id="tracker-loading" style="display:none">Loading guests…</div>
-        <div class="tracker-empty" id="tracker-empty" style="display:none">No RSVPs yet — check back soon</div>
+        <div class="admin-error" id="admin-error">Incorrect password</div>
+      </div>
+      <div id="admin-tracker-wrap" style="display:none">
+        <div class="tracker-card">
+          <div class="tracker-top">
+            <div class="tracker-stats">
+              <div class="tstat"><div class="tstat-num" id="s-total">0</div><div class="tstat-label">Total</div></div>
+              <div class="tstat"><div class="tstat-num" id="s-yes">0</div><div class="tstat-label">Attending</div></div>
+              <div class="tstat"><div class="tstat-num" id="s-no">0</div><div class="tstat-label">Declined</div></div>
+            </div>
+            <input class="tracker-search" type="text" placeholder="Search guests…" oninput="filterG(this.value)">
+          </div>
+          <table class="tracker-table">
+            <thead><tr><th>Name</th><th>Status</th><th>Dietary</th></tr></thead>
+            <tbody id="guest-tbody"></tbody>
+          </table>
+          <div class="tracker-loading" id="tracker-loading" style="display:none">Loading guests…</div>
+          <div class="tracker-empty" id="tracker-empty" style="display:none">No RSVPs yet — check back soon</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- RULES POPUP -->
+<div class="rules-overlay" id="rules-overlay">
+  <div class="rules-modal">
+    <div class="rules-icon">🌿</div>
+    <div class="rules-title">A gentle reminder</div>
+    <div class="rules-body">
+      <strong>No plus-ones.</strong>
+      This celebration is intimate and personal. Only guests named on the invitation are welcome — no exceptions, no surprises.
+      <br><br>
+      <strong>No sharing on social media.</strong>
+      Please refrain from posting any photos, videos, or content from the ceremony on social media — including WhatsApp groups — until we share our official photos.
+      <br><br>
+      Thank you for respecting our wishes and helping make this day exactly what we dreamed of. 🤍
+    </div>
+    <button class="btn-rules-ok" onclick="closeRules()">I understand</button>
+  </div>
+</div>
 
 <!-- QUESTIONS -->
 <section id="questions">
@@ -807,17 +870,65 @@ footer { background: var(--sage-dark); padding: 64px 24px 32px; text-align: cent
 
 <script>
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx50UUIp37bqgdXi9Z-I_zGRu2J7OPBo0WJo--gaEYi45tmjE9NxnjaoYAM2tgcXrH3/exec';
+const ADMIN_PASSWORD = 'pierres2026'; // change this to whatever you want
+
+// ── SCROLL LOCK ──
+let rsvpUnlocked = false;
+
+function checkScrollUnlock() {
+  const faq = document.getElementById('faq');
+  if (!faq || rsvpUnlocked) return;
+  const rect = faq.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.8) {
+    rsvpUnlocked = true;
+    document.getElementById('rsvp-form-lock').classList.remove('rsvp-locked');
+    document.getElementById('rsvp-hint').style.display = 'none';
+    window.removeEventListener('scroll', checkScrollUnlock);
+  }
+}
+
+// Start locked
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('rsvp-form-lock').classList.add('rsvp-locked');
+  document.getElementById('rsvp-hint').style.display = 'block';
+  window.addEventListener('scroll', checkScrollUnlock, { passive: true });
+  checkScrollUnlock();
+});
+
+// ── RULES POPUP ──
+function showRules() {
+  document.getElementById('rules-overlay').classList.add('on');
+}
+function closeRules() {
+  document.getElementById('rules-overlay').classList.remove('on');
+  document.getElementById('rsvp-form-wrap').style.display = 'none';
+  document.getElementById('rsvp-success').classList.add('on');
+}
 
 // ── RSVP TABS ──
 function switchTab(t) {
   document.querySelectorAll('.rsvp-tab').forEach((el,i) => el.classList.toggle('on', (i===0&&t==='form')||(i===1&&t==='tracker')));
   document.getElementById('panel-form').classList.toggle('on', t==='form');
   document.getElementById('panel-tracker').classList.toggle('on', t==='tracker');
-  if (t==='tracker') loadGuests();
+}
+
+// ── ADMIN LOGIN ──
+function checkAdmin() {
+  const pw = document.getElementById('admin-pw').value;
+  const err = document.getElementById('admin-error');
+  if (pw === ADMIN_PASSWORD) {
+    document.getElementById('admin-login-wrap').style.display = 'none';
+    document.getElementById('admin-tracker-wrap').style.display = 'block';
+    loadGuests();
+  } else {
+    err.style.display = 'block';
+    document.getElementById('admin-pw').value = '';
+  }
 }
 
 // ── SUBMIT RSVP → Google Sheets ──
 function submitRSVP() {
+  if (!rsvpUnlocked) return;
   const name    = document.getElementById('f-name').value.trim();
   const email   = document.getElementById('f-email').value.trim();
   const att     = document.querySelector('input[name="att"]:checked').value;
@@ -829,25 +940,13 @@ function submitRSVP() {
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
-  const payload = {
-    name,
-    email,
-    status: att,
-    dietary: dietary || '—',
-    message: msg,
-    date: new Date().toLocaleDateString()
-  };
-
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify({ name, email, status: att, dietary: dietary||'—', message: msg, date: new Date().toLocaleDateString() })
   })
-  .then(() => {
-    document.getElementById('rsvp-form-wrap').style.display = 'none';
-    document.getElementById('rsvp-success').classList.add('on');
-  })
+  .then(() => { showRules(); })
   .catch(() => {
     alert('Something went wrong. Please try again.');
     btn.textContent = 'Send RSVP';
@@ -856,59 +955,9 @@ function submitRSVP() {
 }
 
 // ── LOAD GUESTS FROM Google Sheets ──
-function loadGuests() {
-  const tbody   = document.getElementById('guest-tbody');
-  const empty   = document.getElementById('tracker-empty');
-  const loading = document.getElementById('tracker-loading');
-
-  tbody.innerHTML = '';
-  empty.style.display = 'none';
-  loading.style.display = 'block';
-
-  fetch(SHEET_URL)
-    .then(r => r.json())
-    .then(data => {
-      loading.style.display = 'none';
-      // filter out the header row if returned
-      const guests = data.filter(g => g.Name && g.Name !== 'Name');
-      if (!guests.length) { empty.style.display = 'block'; updateStats(guests); return; }
-      renderRows(guests);
-      updateStats(guests);
-    })
-    .catch(() => {
-      loading.style.display = 'none';
-      empty.style.display = 'block';
-      empty.textContent = 'Could not load guest list. Try again later.';
-    });
-}
-
-function renderRows(guests, filter='') {
-  const tbody = document.getElementById('guest-tbody');
-  const empty = document.getElementById('tracker-empty');
-  const f = filter.toLowerCase();
-  const list = filter
-    ? guests.filter(g => (g.Name||'').toLowerCase().includes(f) || (g.Email||'').toLowerCase().includes(f))
-    : guests;
-
-  if (!list.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-
-  tbody.innerHTML = list.map(g => {
-    const status = (g.Status || '').toLowerCase();
-    const isYes  = status === 'yes';
-    return `
-      <tr>
-        <td><div style="font-weight:500">${g.Name||''}</div><div style="font-size:12px;color:var(--text-light)">${g.Email||''}</div></td>
-        <td><span class="badge ${isYes?'badge-yes':'badge-no'}">${isYes?'Attending':'Declined'}</span></td>
-        <td style="font-size:13px;color:var(--text-mid)">${g.Dietary||'—'}</td>
-      </tr>`;
-  }).join('');
-}
-
-// keep a local copy for search
 let cachedGuests = [];
-const _origLoad = loadGuests;
-loadGuests = function() {
+
+function loadGuests() {
   const tbody   = document.getElementById('guest-tbody');
   const empty   = document.getElementById('tracker-empty');
   const loading = document.getElementById('tracker-loading');
@@ -929,12 +978,28 @@ loadGuests = function() {
       empty.style.display = 'block';
       empty.textContent = 'Could not load guest list. Try again later.';
     });
-};
+}
+
+function renderRows(guests, filter='') {
+  const tbody = document.getElementById('guest-tbody');
+  const empty = document.getElementById('tracker-empty');
+  const f = filter.toLowerCase();
+  const list = filter ? guests.filter(g => (g.Name||'').toLowerCase().includes(f)||(g.Email||'').toLowerCase().includes(f)) : guests;
+  if (!list.length) { tbody.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  tbody.innerHTML = list.map(g => {
+    const isYes = (g.Status||'').toLowerCase()==='yes';
+    return `<tr>
+      <td><div style="font-weight:500">${g.Name||''}</div><div style="font-size:12px;color:var(--text-light)">${g.Email||''}</div></td>
+      <td><span class="badge ${isYes?'badge-yes':'badge-no'}">${isYes?'Attending':'Declined'}</span></td>
+      <td style="font-size:13px;color:var(--text-mid)">${g.Dietary||'—'}</td>
+    </tr>`;
+  }).join('');
+}
 
 function filterG(v) { renderRows(cachedGuests, v); }
 
 function updateStats(guests) {
-  guests = guests || cachedGuests;
   document.getElementById('s-total').textContent = guests.length;
   document.getElementById('s-yes').textContent   = guests.filter(g=>(g.Status||'').toLowerCase()==='yes').length;
   document.getElementById('s-no').textContent    = guests.filter(g=>(g.Status||'').toLowerCase()==='no').length;
